@@ -1,0 +1,51 @@
+mixed-port: 6789
+external-controller: 127.0.0.1:9090
+log-level: info
+
+experimental:
+  sniff-tls-sni: true
+
+sniffer:
+  enable: true
+  sniffing:
+    - tls
+    - http
+  port-whitelist:
+    - 443
+    - 80
+
+dns:
+    enable: true
+    ipv6: true
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    default-nameserver: 
+    - 223.5.5.5
+    - 119.29.29.29
+    nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    # - tls://dns.alidns.com
+    # - https://dns.alidns.com/dns-query
+    # - tls://dot.pub
+    # - https://doh.pub/dns-query
+    # - tls://dot.360.cn
+    # - https://doh.360.cn/dns-query
+    # - tls://dns.cfiec.net
+    # - https://dns.cfiec.net/dns-query
+    fallback:
+    - https://cn-east.lele233.com/dns-query
+    - https://cn-east.lele233.com/cdn
+    - cn-east.ovo.glass:777
+    - https://cn-south.lele233.com/dns-query
+    - https://cn-south.lele233.com/cdn
+    - cn-south.ovo.glass:777
+    - https://1.1.1.1/dns-query
+    # - tcp://208.67.222.222:443
+    # - tls://dns.google
+    fallback-filter:
+      geoip: true
+      geoip-code: CN
+      ipcidr:
+        - 240.0.0.0/4
+        - 127.0.0.0/4
